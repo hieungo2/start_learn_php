@@ -3,14 +3,14 @@
 	<input type="text" name="name">
 	<input type="text" name="sdt">
 	<input type="text" name="address">
-	<input type="submit" name="" value="Gửi">
+	<input type="submit" name="submit" value="Gửi">
 </form>
 
-<?php 
+<?php
 require 'function.php';
 
 $users = show_user();
- ?>
+?>
  <table>
  	<tr>
  		<td>STT</td>
