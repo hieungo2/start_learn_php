@@ -1,0 +1,10 @@
+$(document).ready(function(){
+  $("#register").click(function(){
+    $(".log_in").hide();
+    $(".register").show();
+  });
+  $("#log_in").click(function(){
+    $(".log_in").show();
+    $(".register").hide();
+  });
+});
