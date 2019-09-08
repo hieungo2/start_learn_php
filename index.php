@@ -1,30 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
 <link rel="stylesheet" type="text/css" href="css.css">
-<form action="function.php" method="post">
-	<input type="text" name="name">
-	<input type="text" name="sdt">
-	<input type="text" name="address">
-	<input type="submit" name="submit" value="Gửi">
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="javascript.js"></script>
+</head>
+<body>
+<?php 
+if(isset($_GET['er'])){
+	
+	$er = $_GET['er'];
+	if ($er == 1){
+		echo "<script>alert('sdt ton tai')</script>";
+	}
+	if ($er == 2){
+		echo "<script>alert('sdt hoac mat khau sai')</script>";
+	}
+	
+} ?>
+<div class="register">
+	<form action="function.php?s=rg" method="post">
+	<div>
+		<p>Tên</p>
+		<input type="text" name="name" required="required">
+		<p>Sdt:</p>
+		<input type="text" name="sdt" required="required">
+		<p>Address</p>
+		<input type="text" name="address" required="required">
+		<p>Password</p>
+		<input type="password" name="password" required="required">
+
+		<input type="submit" name="submit" value="Gửi" >
+	</div>
+
+	</form>
+
+<button id="log_in">Đăng Nhập</button>
+</div>
+<div class="log_in">
+	<form action="function.php?s=lg " method="post">
+	<div>
+		<p>Sdt:</p>
+		<input type="text" name="sdt" required="required">
+		<p>Password</p>
+		<input type="password" name="password" required="required">
+		<input type="submit" name="submit" value="Gửi" >
+	</div>
 </form>
+<button id="register">Tạo tài khoản mới</button>
+</div>
 
-<?php
-require 'function.php';
-
-$users = show_user();
-?>
- <table>
- 	<tr>
- 		<td>STT</td>
- 		<td>Name</td>
- 		<td>Tel</td>
- 		<td>Address</td>
- 	</tr>
- 	<?php $i = 0 ?>
- 	<?php foreach($users as $user) : ?>
- 		<tr>
- 			<td>
- 				<?php echo $i++; ?>
- 			</td>
- 			<td><?php echo $user['name']; ?></td><td><?php echo $user['sdt']; ?></td><td><?php echo $user['address']; ?></td>
- 		</tr>
- 	<?php endforeach; ?>
  </table>
+</body>
+</html>
