@@ -6,19 +6,15 @@
 	<meta charset="utf-8">
 </head>
 <body>
+	<h1>Trang Chu</h1>
 	<?php
-require 'function.php';
-$users = show_user();
-
-
-
-?>
-<?php 
- 	if(isset($_SESSION['user_name'])){
-
+		require 'function.php';
+		$users = show_user();
+	?>
+	<?php
+ 	if(isset($_SESSION['user_id'])){
  		echo $_SESSION['user_name'];
-
-echo '<a href="function.php?s=log_out"> log_out</a>';
+		echo '<a href="function.php?s=log_out"> log_out</a>';
  ?>
  <table>
  	<tr>
@@ -27,7 +23,6 @@ echo '<a href="function.php?s=log_out"> log_out</a>';
  		<td>Tel</td>
  		<td>Address</td>
  		<td>Password</td>
-
  	</tr>
  	<?php $i = 0 ?>
  	<?php foreach($users as $user) : ?>
@@ -41,10 +36,9 @@ echo '<a href="function.php?s=log_out"> log_out</a>';
  			<td><?php echo $user['password']; ?></td>
  		</tr>
  	<?php endforeach; ?>
+	<?php }else{
+		header('location:index.php');
+	}
+	?>
 </body>
-</html><h1>Trang Chu</h1>
-<?php }else{
-	header('location:index.php');
-}
-
-?>
+</html>

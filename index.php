@@ -9,16 +9,19 @@
 <script src="javascript.js"></script>
 </head>
 <body>
-<?php 
-
+<?php
+if(isset($_COOKIE['remember'])){
+	$_SESSION['user_id'] = $_COOKIE['remember'];
+	echo $_COOKIE['remember'];
+}
 if (isset($_SESSION['user_id'])) {
-	
+
 	header('location:trangchu.php');
 }else{
 	echo "error";
 }
 if(isset($_GET['er'])){
-	
+
 	$er = $_GET['er'];
 	if ($er == 1){
 		echo "<script>alert('sdt ton tai')</script>";
@@ -26,7 +29,7 @@ if(isset($_GET['er'])){
 	if ($er == 2){
 		echo "<script>alert('sdt hoac mat khau sai')</script>";
 	}
-	
+
 } ?>
 <div class="register">
 	<form action="function.php?s=rg" method="post">
