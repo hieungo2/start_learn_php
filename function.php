@@ -9,44 +9,35 @@
         'password'=>$data['password'],
         'remember'=>$data['remember'],
       ];
-      
-      $id_log_in = log_in($data);
-     if($id_log_in['id'] != 0){
-      
+    $id_log_in = log_in($data);
+    if($id_log_in['id'] != 0){
       if ($data['remember']==1){
         setcookie('remember',$id_log_in['id'], time()+3600);
-       
         header('location:index.php');
       }else{
          $_SESSION['user_id']= $id_log_in['id'];
          $_SESSION['user_name']= $id_log_in['name'];
          header('location:index.php');
       }
-      
-
-      
-      
-
      }else{
-
       header("location:index.php?er=2");
      }
     }
     if ($s == 'log_out') {
        log_out();
-         header('location:index.php');
-     } 
+       header('location:index.php');
+     }
     if ($s == 'rg'){
       if($data == NULL){
       }else{
-      $checksdt = check_tel_exist($data); 
-      if($checksdt['id'] != 0){
-         header("location:index.php?er=1");
-      } else{
-        insert($data);
-      header("location:index.php");
-      }
-    }
+	      $checksdt = check_tel_exist($data);
+	      if($checksdt['id'] != 0){
+	         header("location:index.php?er=1");
+	      } else{
+	        insert($data);
+	      header("location:index.php");
+	      }
+	    }
     }
 	function getParamsPost(){
 	 if(isset($_POST['submit'] ))
@@ -61,7 +52,6 @@
 			'password'=>md5(sha1($_POST['sdt']. $_POST['password'])),
       'remember'=>$remember,
 		];
-
 	  }
 	}
 	function show_user(){
@@ -121,6 +111,6 @@
     }
 function log_out(){
 session_destroy();
- 
+
 }
 ?>
